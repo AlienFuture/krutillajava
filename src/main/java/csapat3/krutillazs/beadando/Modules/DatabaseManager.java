@@ -14,7 +14,6 @@ public class DatabaseManager {
     private static Connection _connection;
     
     public void createConnection()  {
-        _connection = null;
         String host = Config.get("DB_HOST");
         String username = Config.get("DB_USERNAME");
         String password = Config.get("DB_PASSWORD");
