@@ -5,6 +5,7 @@
 package csapat3.krutillazs.beadando.Modules;
 
 import csapat3.krutillazs.beadando.Models.Constants;
+import csapat3.krutillazs.beadando.Models.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -36,27 +37,57 @@ public class DatabaseManager {
     
     public static boolean verifyUserLogin(String username, String password) throws SQLException
     {
-        try
+        if(isConnectionAlive())
         {
-            PreparedStatement statement = _connection.prepareStatement("""
+            try
+            {
+                PreparedStatement statement = _connection.prepareStatement("""
                              SELECT COUNT(*) as found, 'user' as usertype FROM users
                              WHERE username = ? AND password = ?
                              """);
-            statement.setString(1, username);
-            statement.setString(2, password);
+                statement.setString(1, username);
+                statement.setString(2, password);
             
-            ResultSet result = statement.executeQuery();
+                ResultSet result = statement.executeQuery();
             
-            while(result.next())
-            {
-                boolean found = result.getInt(1) > 0;
-                return found;
+                while(result.next())
+                {
+                    boolean found = result.getInt(1) > 0;
+                    return found;
                 
+                }
+            } catch(SQLException ex)
+            {
+                return false;
             }
-        } catch(SQLException ex)
-        {
-            return false;
         }
         return false;
+    }
+    
+    public static User getUserInformations(String username) throws SQLException
+    {
+        if(isConnectionAlive())
+        {
+            try
+            {
+                PreparedStatement statement = _connection.prepareStatement("""
+                                        SELECT username, firstname, lastname
+                                        FROM users
+                                        WHERE username = ?
+                                        """);
+                statement.setString(1, username);
+                
+                ResultSet result = statement.executeQuery();
+                
+                while(result.next())
+                {
+                    return new User(result.getString("username"), result.getString("firstname"), result.getString("lastname"));
+                }
+            } catch(SQLException ex)
+            {
+                return null;
+            }  
+        }
+        return null;
     }
 }

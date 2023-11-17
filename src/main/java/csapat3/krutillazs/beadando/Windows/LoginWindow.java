@@ -4,6 +4,7 @@
  */
 package csapat3.krutillazs.beadando.Windows;
 
+import csapat3.krutillazs.beadando.Models.Session;
 import csapat3.krutillazs.beadando.Modules.DatabaseManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -44,7 +45,7 @@ public class LoginWindow extends javax.swing.JFrame {
         bttnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("bj");
+        setTitle("Bejelentkezés");
         setBackground(new java.awt.Color(255, 255, 255));
         setName("frmLogin"); // NOI18N
 
@@ -115,7 +116,10 @@ public class LoginWindow extends javax.swing.JFrame {
         try
         {
             if(DatabaseManager.verifyUserLogin(txtPnlUserName.getText(), txtPsswrdFldPassword.getText()))
+            {
                 JOptionPane.showMessageDialog(null,  "Sikeres belépés","Hitelesítés",JOptionPane.ERROR_MESSAGE);
+                Session.currentUser = DatabaseManager.getUserInformations(txtPnlUserName.getText());
+            }
             else
                 JOptionPane.showMessageDialog(null,  "Sikertelen bejelentkezés. Ellenőrízd a felhasználóneved és jelszavad!","Hitelesítés",JOptionPane.ERROR_MESSAGE);
 
