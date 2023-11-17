@@ -1,6 +1,8 @@
 package csapat3.krutillazs.beadando.Modules;
 
 import csapat3.krutillazs.beadando.Config;
+import csapat3.krutillazs.beadando.Models.User;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -48,30 +50,33 @@ public class DatabaseManager {
         return false;
     }
     
-    public static User getUserInformations(String username) throws SQLException
+    public User getUserInformations(String username) throws SQLException
     {
-        if(isConnectionAlive())
-        {
-            try
+        if(! isConnectionAlive()) { return null; }
+
+        try {
+            String sql = "SELECT username, firstname, lastname FROM users WHERE username = ?";
+            PreparedStatement statement = _connection.prepareStatement(sql);
+            statement.setString(1, username);
+
+            ResultSet result = statement.executeQuery();
+
+            if(result.next())
             {
-                PreparedStatement statement = _connection.prepareStatement("""
-                                        SELECT username, firstname, lastname
-                                        FROM users
-                                        WHERE username = ?
-                                        """);
-                statement.setString(1, username);
-                
-                ResultSet result = statement.executeQuery();
-                
-                while(result.next())
-                {
-                    return new User(result.getString("username"), result.getString("firstname"), result.getString("lastname"));
-                }
-            } catch(SQLException ex)
-            {
-                return null;
-            }  
+                return new User(result.getString("username"), result.getString("firstname"), result.getString("lastname"));
+            }
+        } catch(SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
+
         return null;
+    }
+
+    private boolean isConnectionAlive() {
+        try {
+            return _connection != null && !_connection.isClosed();
+        } catch (SQLException ex) {
+            return false;
+        }
     }
 }
