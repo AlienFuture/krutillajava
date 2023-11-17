@@ -113,6 +113,7 @@ public class LoginWindow extends javax.swing.JFrame {
 
             if (! container.resolve(DatabaseManager.class).verifyUserLogin(txtPnlUserName.getText(), encryptedPassword)) {
                 JOptionPane.showMessageDialog(null, "Sikertelen bejelentkezés. Ellenőrízd a felhasználóneved és jelszavad!", "Hitelesítés", JOptionPane.ERROR_MESSAGE);
+                Session.currentUser = container.resolve(DatabaseManager.class).getUserInformations(txtPnlUserName.getText());
 
                 return;
             }
@@ -123,6 +124,7 @@ public class LoginWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,  String.format("Hiba történt a hitelesítés során:\n\n%s", ex.getMessage()),"Hitelesítés",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bttnLoginActionPerformed
+
 
     /**
      * @param args the command line arguments
