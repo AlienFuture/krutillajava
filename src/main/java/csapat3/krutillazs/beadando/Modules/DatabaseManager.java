@@ -1,62 +1,77 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package csapat3.krutillazs.beadando.Modules;
 
-import csapat3.krutillazs.beadando.Models.Constants;
+import csapat3.krutillazs.beadando.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author balazsvamos
- */
+
 public class DatabaseManager {
     private static Connection _connection;
     
-    public static void createConnection() throws SQLException {
-     _connection = DriverManager.getConnection(Constants.DBUrl, Constants.DBUsername, Constants.DBPassword);
-    }
-    
-    public static boolean isConnectionAlive()
-    {
+    public void createConnection()  {
+        _connection = null;
+        String host = Config.get("DB_HOST");
+        String username = Config.get("DB_USERNAME");
+        String password = Config.get("DB_PASSWORD");
+
         try {
-        if(_connection != null)
-            if(!_connection.isClosed())
-                return true;
-        return false;
-        } catch(SQLException ex) {
-            return false;
+            _connection = DriverManager.getConnection(host, username, password);
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
     }
-    
-    public static boolean verifyUserLogin(String username, String password) throws SQLException
+
+    public boolean verifyUserLogin(String username, String password) throws SQLException
     {
-        try
-        {
-            PreparedStatement statement = _connection.prepareStatement("""
-                             SELECT COUNT(*) as found, 'user' as usertype FROM users
-                             WHERE username = ? AND password = ?
-                             """);
+        try {
+            String sql = "SELECT COUNT(*) as found, 'user' as usertype FROM users WHERE username = ? AND password = ?";
+            PreparedStatement statement = _connection.prepareStatement(sql);
             statement.setString(1, username);
             statement.setString(2, password);
             
             ResultSet result = statement.executeQuery();
-            
-            while(result.next())
+
+            if(result.next())
             {
-                boolean found = result.getInt(1) > 0;
-                return found;
-                
+                if(result.getInt("found") == 1)
+                {
+                    return true;
+                }
             }
-        } catch(SQLException ex)
-        {
-            return false;
+        } catch(SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
+
         return false;
+    }
+    
+    public static User getUserInformations(String username) throws SQLException
+    {
+        if(isConnectionAlive())
+        {
+            try
+            {
+                PreparedStatement statement = _connection.prepareStatement("""
+                                        SELECT username, firstname, lastname
+                                        FROM users
+                                        WHERE username = ?
+                                        """);
+                statement.setString(1, username);
+                
+                ResultSet result = statement.executeQuery();
+                
+                while(result.next())
+                {
+                    return new User(result.getString("username"), result.getString("firstname"), result.getString("lastname"));
+                }
+            } catch(SQLException ex)
+            {
+                return null;
+            }  
+        }
+        return null;
     }
 }

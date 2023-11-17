@@ -8,8 +8,6 @@ package csapat3.krutillazs.beadando.Models;
  *
  * @author balazsvamos
  */
-public class Constants {
-    public static final String DBUrl = "jdbc:mariadb://161.97.144.84:40000/prog3db";
-    public static final String DBUsername = "prog3";
-    public static final String DBPassword = "ApplePen579";
+public class Session {
+    public static User currentUser;
 }
