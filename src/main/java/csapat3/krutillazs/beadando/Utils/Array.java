@@ -15,6 +15,11 @@ public class Array {
     }
 
     public boolean has(String value) {
+
+        if (this.array == null) {
+            throw new Error("Array is not set. Use setArray() method.");
+        }
+
         for (String item : this.array) {
             if (item.equals(value)) {
                 return true;
