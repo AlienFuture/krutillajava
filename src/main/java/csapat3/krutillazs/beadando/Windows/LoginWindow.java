@@ -10,20 +10,20 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 import csapat3.krutillazs.beadando.Services.GeneralService;
-import csapat3.krutillazs.beadando.Utils.Container;
+import csapat3.krutillazs.beadando.Interfaces.IContainer;
 
 public class LoginWindow extends javax.swing.JFrame {
 
     private javax.swing.JTextPane txtPnlUserName;
     private javax.swing.JPasswordField txtPsswrdFldPassword;
-    private final Container container;
+    private final IContainer container;
 
     /**
      * Creates new form LoginWindow
      */
     public LoginWindow() {
         initComponents();
-        container = Container.getInstance();
+        container = IContainer.getInstance();
         container.resolve(DatabaseManager.class).createConnection();
     }
 

@@ -1,6 +1,6 @@
 package csapat3.krutillazs.beadando.Modules;
 
-import csapat3.krutillazs.beadando.Config;
+import csapat3.krutillazs.beadando.Interfaces.IConfig;
 import csapat3.krutillazs.beadando.Models.User;
 
 import java.sql.Connection;
@@ -14,9 +14,9 @@ public class DatabaseManager {
     private static Connection _connection;
     
     public void createConnection()  {
-        String host = Config.get("DB_HOST");
-        String username = Config.get("DB_USERNAME");
-        String password = Config.get("DB_PASSWORD");
+        String host = IConfig.get(IConfig.HOST);
+        String username = IConfig.get(IConfig.USERNAME);
+        String password = IConfig.get(IConfig.PASSWORD);
 
         try {
             _connection = DriverManager.getConnection(host, username, password);
