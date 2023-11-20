@@ -24,6 +24,7 @@ public class LoginWindow extends javax.swing.JFrame {
     private javax.swing.JTextPane txtPnlUserName;
     private javax.swing.JPasswordField txtPsswrdFldPassword;
     // End of variables declaration//GEN-END:variables
+    ResourceBundleLocalization resourceBundleLocalization = ResourceBundleLocalization.getInstance();
 
     /**
      * Creates new form LoginWindow
@@ -49,8 +50,6 @@ public class LoginWindow extends javax.swing.JFrame {
         txtPnlUserName = new javax.swing.JTextPane();
         txtPsswrdFldPassword = new javax.swing.JPasswordField();
         bttnLogin = new javax.swing.JButton();
-
-        ResourceBundleLocalization resourceBundleLocalization = ResourceBundleLocalization.getInstance();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(resourceBundleLocalization.get("login_title"));
@@ -125,13 +124,13 @@ public class LoginWindow extends javax.swing.JFrame {
             String encryptedPassword = container.resolve(GeneralService.class).encryptPassword(password);
 
             if (! container.resolve(DatabaseManager.class).verifyUserLogin(txtPnlUserName.getText(), encryptedPassword)) {
-                JOptionPane.showMessageDialog(null, "Sikertelen bejelentkezés. Ellenőrízd a felhasználóneved és jelszavad!", "Hitelesítés", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_error_msg"), resourceBundleLocalization.get("login_error_msg_title"), JOptionPane.ERROR_MESSAGE);
                 Session.currentUser = container.resolve(DatabaseManager.class).getUserInformations(txtPnlUserName.getText());
 
                 return;
             }
 
-            JOptionPane.showMessageDialog(null,  "Sikeres belépés","Hitelesítés",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_success_msg"), resourceBundleLocalization.get("login_success_msg_title"), JOptionPane.INFORMATION_MESSAGE);
 
         } catch(SQLException ex) {
             JOptionPane.showMessageDialog(null,  String.format("Hiba történt a hitelesítés során:\n\n%s", ex.getMessage()),"Hitelesítés",JOptionPane.ERROR_MESSAGE);

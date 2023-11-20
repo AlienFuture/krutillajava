@@ -24,11 +24,9 @@ public class ResourceBundleLocalization {
 
         public String get(String key) {
             Localization localization = Localization.getInstance();
-
             Locale.Builder locale = new Locale.Builder().setLanguageTag(localization.getLocalization());
 
             ResourceBundle resourceBundle = ResourceBundle.getBundle("resource", locale.build());
-            System.out.println(resourceBundle.getLocale());
 
             return resourceBundle.getString(key);
         }
