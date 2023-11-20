@@ -18,14 +18,6 @@ public enum ConfigKey {
     }
 
     public String getValue() {
-        return Config.get(this.key);
-    }
-
-    public static String[] getAcceptedConfigs() {
-        return new String[] {
-            HOST.getKey(),
-            USERNAME.getKey(),
-            PASSWORD.getKey(),
-        };
+        return Config.get(this);
     }
 }
