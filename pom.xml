@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>10.0.0</version>
+                <configuration>
+                    <url>jdbc:mariadb://sql.flawless.hu:40000/prog3db</url>
+                    <user>prog3</user>
+                    <password>ApplePen579</password>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>2.2.224</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
     <modelVersion>4.0.0</modelVersion>
     <groupId>csapat3</groupId>
     <artifactId>krutillazs-beadando</artifactId>
@@ -12,6 +33,11 @@
             <version>3.3.0</version>
         </dependency>
         <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+            <version>10.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.9</version>
@@ -20,6 +46,11 @@
             <groupId>io.github.cdimascio</groupId>
             <artifactId>java-dotenv</artifactId>
             <version>5.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE190</version>
         </dependency>
     </dependencies>
     <properties>
