@@ -9,6 +9,7 @@ import csapat3.krutillazs.beadando.Modules.DatabaseManager;
 import java.sql.SQLException;
 import javax.swing.*;
 
+import csapat3.krutillazs.beadando.ResourceBundle.ResourceBundleLocalization;
 import csapat3.krutillazs.beadando.Services.GeneralService;
 import csapat3.krutillazs.beadando.Interfaces.IContainer;
 
@@ -49,19 +50,21 @@ public class LoginWindow extends javax.swing.JFrame {
         txtPsswrdFldPassword = new javax.swing.JPasswordField();
         bttnLogin = new javax.swing.JButton();
 
+        ResourceBundleLocalization resourceBundleLocalization = ResourceBundleLocalization.getInstance();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bejelentkezés");
+        setTitle(resourceBundleLocalization.get("login_title"));
         setBackground(new java.awt.Color(255, 255, 255));
         setName("frmLogin"); // NOI18N
         setResizable(false);
 
-        jLabel1.setText("Felhasználónév:");
+        jLabel1.setText(resourceBundleLocalization.get("username"));
 
-        jLabel2.setText("Jelszó:");
+        jLabel2.setText(resourceBundleLocalization.get("password"));
 
         jScrollPane1.setViewportView(txtPnlUserName);
 
-        bttnLogin.setText("Bejelentkezés");
+        bttnLogin.setText(resourceBundleLocalization.get("login"));
         bttnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bttnLoginMouseClicked(evt);
