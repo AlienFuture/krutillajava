@@ -1,0 +1,1 @@
+ALTER TABLE `guest_students` MODIFY COLUMN `id` int(11) NOT NULL AUTO_INCREMENT;

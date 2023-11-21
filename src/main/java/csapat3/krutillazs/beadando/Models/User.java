@@ -4,29 +4,57 @@
  */
 package csapat3.krutillazs.beadando.Models;
 
+import csapat3.krutillazs.beadando.Abstracts.AbstractModel;
+import csapat3.krutillazs.beadando.Interfaces.IContainer;
+import csapat3.krutillazs.beadando.Services.GeneralService;
+
 /**
  *
  * @author balazsvamos
  */
-public class User {
-    public String _username;
-    private String _firstname;
-    private String _lastname;
-    
-    public User()
-    {
-        
+public class User extends AbstractModel {
+
+    // database column name
+    public static final String USERNAME = "username";
+    public static final String LASTNAME = "lastname";
+    public static final String FIRSTNAME = "firstname";
+    public static final String PASSWORD = "password";
+
+    private String password;
+    private String firstname;
+    private String lastname;
+
+    public User() {
+        super();
+        this.password = "";
+        this.firstname = "";
+        this.lastname = "";
     }
-    
-    public User(String username, String firstname, String lastname)
-    {
-        this._username = username;
-        this._firstname = firstname;
-        this._lastname = lastname;
+
+    public String getPassword() {
+        return password;
     }
-    
-    public String getFullName()
-    {
-        return String.format("%s %s", _firstname, _lastname);
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setPassword(String password) {
+        IContainer container = IContainer.getInstance();
+        password = container.resolve(GeneralService.class).encryptPassword(password);
+
+        this.password = password;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }

@@ -12,6 +12,7 @@ import javax.swing.*;
 import csapat3.krutillazs.beadando.ResourceBundle.ResourceBundleLocalization;
 import csapat3.krutillazs.beadando.Services.GeneralService;
 import csapat3.krutillazs.beadando.Interfaces.IContainer;
+import csapat3.krutillazs.beadando.Services.UserService;
 
 public class LoginWindow extends javax.swing.JFrame {
     private final IContainer container;
@@ -32,7 +33,6 @@ public class LoginWindow extends javax.swing.JFrame {
     public LoginWindow() {
         initComponents();
         container = IContainer.getInstance();
-        container.resolve(DatabaseManager.class).createConnection();
     }
 
     /**
@@ -122,10 +122,11 @@ public class LoginWindow extends javax.swing.JFrame {
         try {
             String password = new String(txtPsswrdFldPassword.getPassword());
             String encryptedPassword = container.resolve(GeneralService.class).encryptPassword(password);
+            UserService userService = container.resolve(UserService.class);
 
-            if (! container.resolve(DatabaseManager.class).verifyUserLogin(txtPnlUserName.getText(), encryptedPassword)) {
+            if (! userService.verifyUserLogin(txtPnlUserName.getText(), encryptedPassword)) {
                     JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_error_msg"), resourceBundleLocalization.get("login_error_msg_title"), JOptionPane.ERROR_MESSAGE);
-                Session.currentUser = container.resolve(DatabaseManager.class).getUserInformations(txtPnlUserName.getText());
+                Session.currentUser = userService.getUserInformations(txtPnlUserName.getText());
 
                 return;
             }
