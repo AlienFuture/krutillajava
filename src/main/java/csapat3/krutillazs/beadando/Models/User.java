@@ -20,15 +20,21 @@ public class User extends AbstractModel {
     public static final String FIRSTNAME = "firstname";
     public static final String PASSWORD = "password";
 
+    private String username;
     private String password;
     private String firstname;
     private String lastname;
 
     public User() {
         super();
+        this.username = "";
         this.password = "";
         this.firstname = "";
         this.lastname = "";
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
@@ -43,6 +49,9 @@ public class User extends AbstractModel {
         return lastname;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public void setPassword(String password) {
         IContainer container = IContainer.getInstance();
         password = container.resolve(GeneralService.class).encryptPassword(password);
