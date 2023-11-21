@@ -5,17 +5,17 @@
 package csapat3.krutillazs.beadando.Windows;
 
 import csapat3.krutillazs.beadando.Models.Session;
-import csapat3.krutillazs.beadando.Modules.DatabaseManager;
+
 import java.sql.SQLException;
 import javax.swing.*;
 
 import csapat3.krutillazs.beadando.ResourceBundle.ResourceBundleLocalization;
 import csapat3.krutillazs.beadando.Services.GeneralService;
-import csapat3.krutillazs.beadando.Interfaces.IContainer;
+import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
 import csapat3.krutillazs.beadando.Services.UserService;
 
 public class LoginWindow extends javax.swing.JFrame {
-    private final IContainer container;
+    private final ContainerInterface container;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnLogin;
@@ -32,7 +32,7 @@ public class LoginWindow extends javax.swing.JFrame {
      */
     public LoginWindow() {
         initComponents();
-        container = IContainer.getInstance();
+        container = ContainerInterface.getInstance();
     }
 
     /**
@@ -124,8 +124,9 @@ public class LoginWindow extends javax.swing.JFrame {
             String encryptedPassword = container.resolve(GeneralService.class).encryptPassword(password);
             UserService userService = container.resolve(UserService.class);
 
-            if (! userService.verifyUserLogin(txtPnlUserName.getText(), encryptedPassword)) {
-                    JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_error_msg"), resourceBundleLocalization.get("login_error_msg_title"), JOptionPane.ERROR_MESSAGE);
+            if (userService.verifyUserLogin(txtPnlUserName.getText(), encryptedPassword) != null) {
+                JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_error_msg"), resourceBundleLocalization.get("login_error_msg_title"), JOptionPane.ERROR_MESSAGE);
+
                 Session.currentUser = userService.getUserInformations(txtPnlUserName.getText());
 
                 return;
