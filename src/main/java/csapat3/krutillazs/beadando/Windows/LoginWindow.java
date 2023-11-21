@@ -9,6 +9,7 @@ import csapat3.krutillazs.beadando.Models.Session;
 import java.sql.SQLException;
 import javax.swing.*;
 
+import csapat3.krutillazs.beadando.Models.User;
 import csapat3.krutillazs.beadando.ResourceBundle.ResourceBundleLocalization;
 import csapat3.krutillazs.beadando.Services.GeneralService;
 import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
@@ -123,19 +124,20 @@ public class LoginWindow extends javax.swing.JFrame {
             String password = new String(txtPsswrdFldPassword.getPassword());
             String encryptedPassword = container.resolve(GeneralService.class).encryptPassword(password);
             UserService userService = container.resolve(UserService.class);
+            User user = userService.verifyUserLogin(txtPnlUserName.getText(), encryptedPassword);
 
-            if (userService.verifyUserLogin(txtPnlUserName.getText(), encryptedPassword) != null) {
-                JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_error_msg"), resourceBundleLocalization.get("login_error_msg_title"), JOptionPane.ERROR_MESSAGE);
+            if (user != null) {
+                JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_success_msg"), resourceBundleLocalization.get("login_success_msg_title"), JOptionPane.INFORMATION_MESSAGE);
 
-                Session.currentUser = userService.getUserInformations(txtPnlUserName.getText());
+                Session.currentUser = user;
+                System.out.println(user.getId());
 
                 return;
             }
 
-            JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_success_msg"), resourceBundleLocalization.get("login_success_msg_title"), JOptionPane.INFORMATION_MESSAGE);
-
+            JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_error_msg"), resourceBundleLocalization.get("login_error_msg_title"), JOptionPane.ERROR_MESSAGE);
         } catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null,  String.format("Hiba történt a hitelesítés során:\n\n%s", ex.getMessage()),"Hitelesítés",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, String.format("Hiba történt a hitelesítés során:\n\n%s", ex.getMessage()),"Hitelesítés",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bttnLoginActionPerformed
 
