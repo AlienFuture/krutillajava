@@ -5,7 +5,7 @@
 package csapat3.krutillazs.beadando.Models;
 
 import csapat3.krutillazs.beadando.Abstracts.AbstractModel;
-import csapat3.krutillazs.beadando.Interfaces.IContainer;
+import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
 import csapat3.krutillazs.beadando.Services.GeneralService;
 
 /**
@@ -15,10 +15,10 @@ import csapat3.krutillazs.beadando.Services.GeneralService;
 public class User extends AbstractModel {
 
     // database column name
-    public static final String USERNAME = "username";
-    public static final String LASTNAME = "lastname";
-    public static final String FIRSTNAME = "firstname";
-    public static final String PASSWORD = "password";
+    public static final String FIELD_USERNAME = "username";
+    public static final String FIELD_LASTNAME = "lastname";
+    public static final String FIELD_FIRSTNAME = "firstname";
+    public static final String FIELD_PASSWORD = "password";
 
     private String username;
     private String password;
@@ -53,7 +53,7 @@ public class User extends AbstractModel {
         this.username = username;
     }
     public void setPassword(String password) {
-        IContainer container = IContainer.getInstance();
+        ContainerInterface container = ContainerInterface.getInstance();
         password = container.resolve(GeneralService.class).encryptPassword(password);
 
         this.password = password;

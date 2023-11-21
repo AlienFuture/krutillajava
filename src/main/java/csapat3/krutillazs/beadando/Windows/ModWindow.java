@@ -63,7 +63,7 @@ public class ModWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(370, 200, 452, 402);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/images/duelogofeher.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/duelogofeher.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, -40, 660, 180);
 
@@ -122,7 +122,7 @@ public class ModWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(440, 110, 310, 70);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/images/menubg.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/menubg.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1320, 780);
 

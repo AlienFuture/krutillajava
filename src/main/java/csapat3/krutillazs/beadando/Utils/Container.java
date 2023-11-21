@@ -1,6 +1,6 @@
 package csapat3.krutillazs.beadando.Utils;
 
-import csapat3.krutillazs.beadando.Interfaces.IContainer;
+import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 /**
  *Register services to the container
  */
-public class Container implements IContainer {
+public class Container implements ContainerInterface {
 
     private final Map<Class<?>, Supplier<?>> services = new HashMap<>();
 

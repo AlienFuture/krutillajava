@@ -45,11 +45,11 @@ public class MenuWindow extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/src/images/duelogofeher.png")))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/duelogofeher.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, -40, 660, 180);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/src/images/kollegiumlogo.png")))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/kollegiumlogo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(650, 130, 470, 440);
 
@@ -106,7 +106,7 @@ public class MenuWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(570, 590, 570, 110);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/src/images/menubg.jpg")))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/menubg.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-100, 0, 1920, 1080);
 

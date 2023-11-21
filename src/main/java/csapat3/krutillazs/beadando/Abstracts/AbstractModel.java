@@ -1,10 +1,10 @@
 package csapat3.krutillazs.beadando.Abstracts;
 
 abstract public class AbstractModel {
-    public static final String ID = "id";
-    public static final String CREATED_AT = "created_at";
-    public static final String UPDATED_AT = "updated_at";
-    public static final String IS_DELETED = "is_deleted";
+    public static final String FIELD_ID = "id";
+    public static final String FIELD_CREATED_AT = "created_at";
+    public static final String FIELD_UPDATED_AT = "updated_at";
+    public static final String FIELD_IS_DELETED = "is_deleted";
 
     private int id;
     private String createdAt;
