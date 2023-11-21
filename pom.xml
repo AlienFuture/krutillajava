@@ -7,9 +7,9 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>10.0.0</version>
                 <configuration>
-                    <url>jdbc:mariadb://sql.flawless.hu:40000/prog3db</url>
-                    <user>prog3</user>
-                    <password>ApplePen579</password>
+                    <url>${url}</url>
+                    <user>${user}</user>
+                    <password>${password}</password>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -58,5 +58,8 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>csapat3.krutillazs.beadando.KrutillazsBeadando</exec.mainClass>
+        <url>jdbc:mariadb://sql.flawless.hu:40000/prog3db</url>
+        <user>prog3</user>
+        <password>ApplePen579</password>
     </properties>
 </project>
