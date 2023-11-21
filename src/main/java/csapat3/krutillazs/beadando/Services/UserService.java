@@ -21,7 +21,11 @@ public class UserService {
 
             if(result.next())
             {
-                //return new User(result.getString("username"), result.getString("firstname"), result.getString("lastname"));
+                User user = new User();
+                user.setFirstname(result.getString("firstname"));
+                user.setLastname(result.getString("lastname"));
+                user.setUsername(result.getString("username"));
+
             }
         } catch(SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
