@@ -79,7 +79,7 @@ public class GuestWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel9);
         jLabel9.setBounds(640, 390, 100, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/images/duelogofeher.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/duelogofeher.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, -40, 660, 180);
 
@@ -156,7 +156,7 @@ public class GuestWindow extends javax.swing.JFrame {
         getContentPane().add(jTextField2);
         jTextField2.setBounds(370, 280, 180, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/images/menubg.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menubg.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-90, 0, 1920, 1080);
 
