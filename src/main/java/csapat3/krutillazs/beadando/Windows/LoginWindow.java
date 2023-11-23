@@ -131,6 +131,9 @@ public class LoginWindow extends javax.swing.JFrame {
 
                 Session.currentUser = user;
                 System.out.println(user.getId());
+                
+                this.setVisible(false);
+                new MenuWindow().setVisible(true);
 
                 return;
             }

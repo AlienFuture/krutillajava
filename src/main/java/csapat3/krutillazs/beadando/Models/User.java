@@ -48,6 +48,10 @@ public class User extends AbstractModel {
     public String getLastname() {
         return lastname;
     }
+    
+    public String getFullName() {
+        return String.format("%s %s", lastname, firstname);
+    }
 
     public void setUsername(String username) {
         this.username = username;

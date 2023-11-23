@@ -167,7 +167,7 @@ public class AddWindow extends javax.swing.JFrame {
         getContentPane().add(jTextField9);
         jTextField9.setBounds(640, 490, 180, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/images/duelogofeher.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/duelogofeher.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, -40, 660, 180);
 
@@ -181,7 +181,7 @@ public class AddWindow extends javax.swing.JFrame {
         getContentPane().add(jTextField1);
         jTextField1.setBounds(-20, 0, 1940, 100);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/images/menubg.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menubg.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-100, 0, 1920, 1080);
 

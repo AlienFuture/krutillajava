@@ -4,19 +4,42 @@
  */
 package csapat3.krutillazs.beadando.Windows;
 
+import csapat3.krutillazs.beadando.Models.Message;
+import csapat3.krutillazs.beadando.Models.Session;
+import csapat3.krutillazs.beadando.Models.User;
+import csapat3.krutillazs.beadando.Services.MessageService;
+import java.sql.SQLException;
 import java.util.Objects;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author 22-es Iteráció
  */
 public class MenuWindow extends javax.swing.JFrame {
-
+    MessageService messageService;
     /**
      * Creates new form MenuWindow
      */
     public MenuWindow() {
+       this.messageService = new MessageService();
         initComponents();
+        
+        // DEBUG MIATT, RELEASEKOR TÖRÖLNI
+        if(Session.currentUser == null)
+            Session.currentUser = new User();
+        
+        lblLoggedName.setText(Session.currentUser.getFullName());
+        
+        try {
+            initMessagesList();
+            txtAreaMessageOfDay.setText(messageService.getLatestMessageContent());
+        } catch(SQLException ex) {
+                        JOptionPane.showMessageDialog(null, String.format("Hiba történt a napi üzenet lekérdezése során:\n\n%s", ex.getMessage()),"Nap üzenete",JOptionPane.ERROR_MESSAGE);
+
+        }
+        
     }
 
     /**
@@ -34,10 +57,13 @@ public class MenuWindow extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        lstvwMessages = new javax.swing.JScrollPane();
+        lstMessages = new javax.swing.JList<>();
+        lblLoggedName = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAreaMessageOfDay = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,11 +71,11 @@ public class MenuWindow extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/duelogofeher.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/duelogofeher.png"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, -40, 660, 180);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/kollegiumlogo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kollegiumlogo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(650, 130, 470, 440);
 
@@ -82,6 +108,18 @@ public class MenuWindow extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(190, 590, 270, 110);
 
+        lstMessages.setBackground(new java.awt.Color(0, 153, 153));
+        lstvwMessages.setViewportView(lstMessages);
+
+        getContentPane().add(lstvwMessages);
+        lstvwMessages.setBounds(570, 710, 570, 154);
+
+        lblLoggedName.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        lblLoggedName.setForeground(new java.awt.Color(255, 255, 255));
+        lblLoggedName.setText("Bejelentkezett név N/A");
+        getContentPane().add(lblLoggedName);
+        lblLoggedName.setBounds(1060, 30, 270, 40);
+
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(51, 128, 214));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,17 +134,18 @@ public class MenuWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 1320, 100);
 
-        jTextArea1.setBackground(new java.awt.Color(196, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Message of the day");
-        jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAreaMessageOfDay.setBackground(new java.awt.Color(196, 255, 255));
+        txtAreaMessageOfDay.setColumns(20);
+        txtAreaMessageOfDay.setForeground(new java.awt.Color(255, 0, 0));
+        txtAreaMessageOfDay.setRows(5);
+        txtAreaMessageOfDay.setText("Message of the day");
+        txtAreaMessageOfDay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setViewportView(txtAreaMessageOfDay);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(570, 590, 570, 110);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csapat3/krutillazs/beadando/Graphics/menubg.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menubg.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(-100, 0, 1920, 1080);
 
@@ -155,6 +194,15 @@ public class MenuWindow extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void initMessagesList() throws SQLException {
+        DefaultListModel listModel = new DefaultListModel();
+        
+        for(Message msg : messageService.getAllMessages())
+            listModel.addElement(msg.getTitle());
+        lstMessages.setModel(listModel);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -166,7 +214,10 @@ public class MenuWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblLoggedName;
+    private javax.swing.JList<String> lstMessages;
+    private javax.swing.JScrollPane lstvwMessages;
+    private javax.swing.JTextArea txtAreaMessageOfDay;
     // End of variables declaration//GEN-END:variables
 }
