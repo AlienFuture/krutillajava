@@ -26,4 +26,8 @@ public class MessageService {
         public String getLatestMessageContent() throws SQLException {
             return messageRepository.findLatest().getContent();
         }
+        
+        public Message getLatestMessageByTitle(String title) throws SQLException {
+            return messageRepository.findByTitle(title);
+        }
 }

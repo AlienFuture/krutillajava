@@ -58,6 +58,31 @@ public class MessageOfDayRepository extends AbstractRepository<Message, Integer>
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    public Message findByTitle(String titleFilter) throws SQLException {
+        Message message = new Message();
+        String querry = "SELECT * FROM messages WHERE title = ? ORDER BY created_at DESC LIMIT 1";
+        PreparedStatement statement = connection.prepareStatement(querry);
+        statement.setString(1, titleFilter);
+        
+        ResultSet querryResult = statement.executeQuery();
+        
+        if(querryResult.next()) {
+            int id = querryResult.getInt(Message.FIELD_ID);
+            String title = querryResult.getString(Message.FIELD_TITLE);
+            String content = querryResult.getString(Message.FIELD_CONTENT);
+            String createdAt = querryResult.getString(Message.FIELD_CREATED_AT);
+            String updatedAt = querryResult.getString(Message.FIELD_UPDATED_AT);
+            
+            message.setId(id);
+            message.setTitle(title);
+            message.setContent(content);
+            message.setCreatedAt(createdAt);
+            message.setUpdatedAt(updatedAt);
+        }
+        
+        return message;
+    }
+    
     public Message findLatest() throws SQLException {
         Message message = new Message();
         String querry = "SELECT * FROM messages ORDER BY created_at DESC LIMIT 1";

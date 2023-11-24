@@ -8,9 +8,11 @@ import csapat3.krutillazs.beadando.Models.Message;
 import csapat3.krutillazs.beadando.Models.Session;
 import csapat3.krutillazs.beadando.Models.User;
 import csapat3.krutillazs.beadando.Services.MessageService;
+import csapat3.krutillazs.beadando.Windows.Dialogs.MessageOfDayDialog;
 import java.sql.SQLException;
 import java.util.Objects;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,10 +55,10 @@ public class MenuWindow extends javax.swing.JFrame {
 
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bttnAddStudent = new javax.swing.JButton();
+        bttnAddGuest = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bttnExit = new javax.swing.JButton();
         lstvwMessages = new javax.swing.JScrollPane();
         lstMessages = new javax.swing.JList<>();
         lblLoggedName = new javax.swing.JLabel();
@@ -79,22 +81,27 @@ public class MenuWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(650, 130, 470, 440);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setText("Hallgató felvétel");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 204, 255), null, null));
-        getContentPane().add(jButton2);
-        jButton2.setBounds(190, 150, 270, 110);
-
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton3.setText("Vendég felvétel");
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 204, 255), null, null));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bttnAddStudent.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnAddStudent.setText("Hallgató felvétel");
+        bttnAddStudent.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 204, 255), null, null));
+        bttnAddStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bttnAddStudentActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(190, 290, 270, 110);
+        getContentPane().add(bttnAddStudent);
+        bttnAddStudent.setBounds(190, 150, 270, 110);
+
+        bttnAddGuest.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnAddGuest.setText("Vendég felvétel");
+        bttnAddGuest.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 204, 255), null, null));
+        bttnAddGuest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnAddGuestActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bttnAddGuest);
+        bttnAddGuest.setBounds(190, 290, 270, 110);
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton4.setText("Adatmódosítás");
@@ -102,13 +109,23 @@ public class MenuWindow extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(190, 440, 270, 110);
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton5.setText("Kijelentkezés");
-        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 204, 255), null, null));
-        getContentPane().add(jButton5);
-        jButton5.setBounds(190, 590, 270, 110);
+        bttnExit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnExit.setText("Kijelentkezés");
+        bttnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 204, 255), null, null));
+        bttnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bttnExit);
+        bttnExit.setBounds(190, 590, 270, 110);
 
         lstMessages.setBackground(new java.awt.Color(0, 153, 153));
+        lstMessages.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstMessagesMouseClicked(evt);
+            }
+        });
         lstvwMessages.setViewportView(lstMessages);
 
         getContentPane().add(lstvwMessages);
@@ -156,9 +173,38 @@ public class MenuWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bttnAddGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAddGuestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bttnAddGuestActionPerformed
+
+    private void bttnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnExitActionPerformed
+        Session.currentUser = null;
+        this.setVisible(false);
+        new LoginWindow().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bttnExitActionPerformed
+
+    private void bttnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAddStudentActionPerformed
+        new AddWindow().setVisible(true);
+    }//GEN-LAST:event_bttnAddStudentActionPerformed
+
+    private void lstMessagesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstMessagesMouseClicked
+        try {
+            JList list = (JList)evt.getSource();
+            if (evt.getClickCount() == 2) {
+                int index = list.locationToIndex(evt.getPoint());
+                if (index >= 0) {
+                    Object obj = list.getModel().getElementAt(index);
+                    Message selectedMsg = messageService.getLatestMessageByTitle(obj.toString());
+
+                    new MessageOfDayDialog(selectedMsg).setVisible(true);
+              }
+            }
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, String.format("Hiba történt a napi üzenet lekérdezése során:\n\n%s", ex.getMessage()),"Nap üzenete",JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_lstMessagesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -205,10 +251,10 @@ public class MenuWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bttnAddGuest;
+    private javax.swing.JButton bttnAddStudent;
+    private javax.swing.JButton bttnExit;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

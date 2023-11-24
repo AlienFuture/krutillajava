@@ -134,6 +134,8 @@ public class LoginWindow extends javax.swing.JFrame {
                 
                 this.setVisible(false);
                 new MenuWindow().setVisible(true);
+                
+                this.dispose();
 
                 return;
             }
