@@ -37,15 +37,21 @@ public class GuestWindow extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jTextField5 = new javax.swing.JTextField();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1280, 768));
+        setMinimumSize(new java.awt.Dimension(1280, 768));
         getContentPane().setLayout(null);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -63,21 +69,21 @@ public class GuestWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(470, 560, 250, 70);
+        jButton1.setBounds(470, 570, 250, 70);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Keresztnév");
+        jLabel8.setText("Kor");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(640, 320, 100, 30);
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Jelszó");
+        jLabel9.setText("Mikortól");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(640, 390, 100, 30);
+        jLabel9.setBounds(370, 460, 100, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/duelogofeher.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -86,7 +92,7 @@ public class GuestWindow extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Felhasználónév");
+        jLabel3.setText("Vezetéknév");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(370, 250, 110, 30);
 
@@ -98,12 +104,12 @@ public class GuestWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(100, 640, 250, 70);
+        jButton2.setBounds(100, 650, 250, 70);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Vezetéknév");
+        jLabel7.setText("Keresztnév");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(640, 250, 100, 30);
 
@@ -123,7 +129,7 @@ public class GuestWindow extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Vendég felvétele");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(390, 110, 410, 140);
+        jLabel11.setBounds(390, 100, 410, 140);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -131,14 +137,6 @@ public class GuestWindow extends javax.swing.JFrame {
         jLabel1.setText("Születési idő");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(370, 320, 100, 30);
-
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(370, 350, 180, 30);
 
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,14 +149,34 @@ public class GuestWindow extends javax.swing.JFrame {
         jTextField8.setBounds(640, 420, 180, 30);
         getContentPane().add(jTextField6);
         jTextField6.setBounds(640, 350, 180, 30);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(370, 420, 180, 30);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(370, 280, 180, 30);
+        getContentPane().add(jDateChooser1);
+        jDateChooser1.setBounds(640, 490, 180, 30);
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(370, 420, 180, 30);
+        getContentPane().add(jDateChooser2);
+        jDateChooser2.setBounds(370, 350, 180, 30);
+        getContentPane().add(jDateChooser3);
+        jDateChooser3.setBounds(370, 490, 180, 30);
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Telefonszám");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(640, 390, 100, 30);
+
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Meddig");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(640, 460, 100, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menubg.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(-90, 0, 1920, 1080);
+        jLabel2.setBounds(-80, 40, 1920, 1080);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,10 +192,6 @@ public class GuestWindow extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
@@ -221,8 +235,13 @@ public class GuestWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -232,8 +251,7 @@ public class GuestWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
