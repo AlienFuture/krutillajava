@@ -174,7 +174,7 @@ public class MenuWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void bttnAddGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAddGuestActionPerformed
-        // TODO add your handling code here:
+        new GuestWindow().setVisible(true);
     }//GEN-LAST:event_bttnAddGuestActionPerformed
 
     private void bttnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnExitActionPerformed

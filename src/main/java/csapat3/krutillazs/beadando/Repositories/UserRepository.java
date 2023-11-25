@@ -17,8 +17,9 @@ import java.util.List;
 public class UserRepository extends AbstractRepository<User, Integer> implements Addable<User>, Updateable<User>, Deletable<User> {
 
     @Override
-    public void add(User entity) {
+    public boolean add(User entity) {
         //TODO: Implement this method
+        return false;
     }
 
     @Override

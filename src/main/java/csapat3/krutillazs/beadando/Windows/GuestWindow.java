@@ -4,6 +4,13 @@
  */
 package csapat3.krutillazs.beadando.Windows;
 
+import csapat3.krutillazs.beadando.Models.Guest;
+import csapat3.krutillazs.beadando.Services.GuestService;
+import java.time.Period;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 22-es Iteráció
@@ -13,8 +20,11 @@ public class GuestWindow extends javax.swing.JFrame {
     /**
      * Creates new form GuestWindow
      */
+    private GuestService guestService;
     public GuestWindow() {
         initComponents();
+        
+        guestService = new GuestService();
     }
 
     /**
@@ -27,24 +37,24 @@ public class GuestWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bttnAdd = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        bttnClose = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextField5 = new javax.swing.JTextField();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        txtBxFirstName = new javax.swing.JTextField();
+        txtBxPhoneNumber = new javax.swing.JTextField();
+        txtBxAge = new javax.swing.JTextField();
+        txtBxLastName = new javax.swing.JTextField();
+        txtBxUntil = new com.toedter.calendar.JDateChooser();
+        txtBxAddress = new javax.swing.JTextField();
+        txtBxBirthday = new com.toedter.calendar.JDateChooser();
+        txtBxFrom = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,15 +71,15 @@ public class GuestWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(370, 390, 100, 30);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("Hozzáadás");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bttnAdd.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnAdd.setText("Hozzáadás");
+        bttnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bttnAddActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(470, 570, 250, 70);
+        getContentPane().add(bttnAdd);
+        bttnAdd.setBounds(470, 570, 250, 70);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -96,15 +106,15 @@ public class GuestWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(370, 250, 110, 30);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setText("Vissza");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bttnClose.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnClose.setText("Vissza");
+        bttnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bttnCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(100, 650, 250, 70);
+        getContentPane().add(bttnClose);
+        bttnClose.setBounds(100, 650, 250, 70);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -138,27 +148,38 @@ public class GuestWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(370, 320, 100, 30);
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtBxFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtBxFirstNameActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(640, 280, 180, 30);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(640, 420, 180, 30);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(640, 350, 180, 30);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(370, 280, 180, 30);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(640, 490, 180, 30);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(370, 420, 180, 30);
-        getContentPane().add(jDateChooser2);
-        jDateChooser2.setBounds(370, 350, 180, 30);
-        getContentPane().add(jDateChooser3);
-        jDateChooser3.setBounds(370, 490, 180, 30);
+        getContentPane().add(txtBxFirstName);
+        txtBxFirstName.setBounds(640, 280, 180, 30);
+        getContentPane().add(txtBxPhoneNumber);
+        txtBxPhoneNumber.setBounds(640, 420, 180, 30);
+        getContentPane().add(txtBxAge);
+        txtBxAge.setBounds(640, 350, 180, 30);
+        getContentPane().add(txtBxLastName);
+        txtBxLastName.setBounds(370, 280, 180, 30);
+        getContentPane().add(txtBxUntil);
+        txtBxUntil.setBounds(640, 490, 180, 30);
+        getContentPane().add(txtBxAddress);
+        txtBxAddress.setBounds(370, 420, 180, 30);
+
+        txtBxBirthday.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBxBirthdayFocusLost(evt);
+            }
+        });
+        txtBxBirthday.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtBxBirthdayPropertyChange(evt);
+            }
+        });
+        getContentPane().add(txtBxBirthday);
+        txtBxBirthday.setBounds(370, 350, 180, 30);
+        getContentPane().add(txtBxFrom);
+        txtBxFrom.setBounds(370, 490, 180, 30);
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -181,21 +202,44 @@ public class GuestWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bttnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAddActionPerformed
+        Guest guest = new Guest();
+        guest.setFirstName(txtBxFirstName.getText());
+        guest.setLastName(txtBxLastName.getText());
+        guest.setAddress(txtBxAddress.getText());
+        guest.setBirthday(txtBxBirthday.getDate());
+        guest.setPhoneNumber(txtBxPhoneNumber.getText());
+        guest.setStayFrom(txtBxFrom.getDate());
+        guest.setStayUntil(txtBxUntil.getDate());
+        
+        if(guestService.addGuest(guest))
+            JOptionPane.showMessageDialog(null, "Hozzáadás sikeres!", "Vendég hozzáadása",JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null, "Hozzáadás nem sikerült!","Vendég hozzáadása",JOptionPane.ERROR_MESSAGE);
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bttnAddActionPerformed
+
+    private void bttnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCloseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_bttnCloseActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtBxFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBxFirstNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtBxFirstNameActionPerformed
+
+    private void txtBxBirthdayFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBxBirthdayFocusLost
+        updateAgeTextbox();
+    }//GEN-LAST:event_txtBxBirthdayFocusLost
+
+    private void txtBxBirthdayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtBxBirthdayPropertyChange
+        updateAgeTextbox();
+    }//GEN-LAST:event_txtBxBirthdayPropertyChange
 
     /**
      * @param args the command line arguments
@@ -231,13 +275,24 @@ public class GuestWindow extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void updateAgeTextbox() {
+        Date today = new Date();
+        Date birthday = txtBxBirthday.getDate();
+        
+        if(birthday == null)
+            return;
+        
+        
+        long diffInMiles = Math.abs(today.getTime() - birthday.getTime());
+        long difference = (diffInMiles / (1000l*60*60*24*365));
+        
+        txtBxAge.setText(Long.toString(difference));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private javax.swing.JButton bttnAdd;
+    private javax.swing.JButton bttnClose;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -250,10 +305,13 @@ public class GuestWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField txtBxAddress;
+    private javax.swing.JTextField txtBxAge;
+    private com.toedter.calendar.JDateChooser txtBxBirthday;
+    private javax.swing.JTextField txtBxFirstName;
+    private com.toedter.calendar.JDateChooser txtBxFrom;
+    private javax.swing.JTextField txtBxLastName;
+    private javax.swing.JTextField txtBxPhoneNumber;
+    private com.toedter.calendar.JDateChooser txtBxUntil;
     // End of variables declaration//GEN-END:variables
 }

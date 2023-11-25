@@ -108,8 +108,9 @@ public class MessageOfDayRepository extends AbstractRepository<Message, Integer>
     }
 
     @Override
-    public void add(Message entity) {
+    public boolean add(Message entity) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
