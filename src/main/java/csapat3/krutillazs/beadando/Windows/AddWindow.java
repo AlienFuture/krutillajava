@@ -215,7 +215,8 @@ public class AddWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBxLastNameActionPerformed
 
     private void bttnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCloseActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_bttnCloseActionPerformed
 
     /**
