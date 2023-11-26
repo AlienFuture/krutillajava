@@ -2,6 +2,7 @@ package csapat3.krutillazs.beadando.Utils;
 
 import java.io.File;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Interfaces.LoggerInterface;
 
 public class Logger implements LoggerInterface {
@@ -19,7 +20,7 @@ public class Logger implements LoggerInterface {
         return instance;
     }
 
-    public void log(String message) {
+    public void log(String message, LogType logType) {
         File logFolder = new File("logs");
         if (!logFolder.exists()) {
             logFolder.mkdir();
@@ -35,8 +36,9 @@ public class Logger implements LoggerInterface {
         }
 
         try {
+            String currentDate = java.time.LocalDate.now().toString();
             java.io.FileWriter fileWriter = new java.io.FileWriter(file, true);
-            fileWriter.write(message + "\n");
+            fileWriter.write("[" + currentDate + "] " + logType.toString() + ": " + message + "\n");
             fileWriter.close();
         } catch (Exception e) {
             System.out.println("Error while writing to log file");
