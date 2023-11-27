@@ -4,8 +4,10 @@
  */
 package csapat3.krutillazs.beadando.Windows;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Models.Guest;
 import csapat3.krutillazs.beadando.Services.GuestService;
+import csapat3.krutillazs.beadando.Utils.Logger;
 import java.time.Period;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +24,9 @@ public class GuestWindow extends javax.swing.JFrame {
      */
     private GuestService guestService;
     public GuestWindow() {
+        Logger.log("Opening Add Guestform", LogType.INFO);
         initComponents();
+        Logger.log("Goest Form opened.", LogType.INFO);
         
         guestService = new GuestService();
     }
@@ -125,11 +129,6 @@ public class GuestWindow extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(51, 128, 214));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(-20, 0, 1940, 100);
 
@@ -147,12 +146,6 @@ public class GuestWindow extends javax.swing.JFrame {
         jLabel1.setText("Születési idő");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(370, 320, 100, 30);
-
-        txtBxFirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBxFirstNameActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtBxFirstName);
         txtBxFirstName.setBounds(640, 280, 180, 30);
         getContentPane().add(txtBxPhoneNumber);
@@ -203,6 +196,7 @@ public class GuestWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAddActionPerformed
+        Logger.log("Creating Guest object", LogType.INFO);
         Guest guest = new Guest();
         guest.setFirstName(txtBxFirstName.getText());
         guest.setLastName(txtBxLastName.getText());
@@ -212,26 +206,24 @@ public class GuestWindow extends javax.swing.JFrame {
         guest.setStayFrom(txtBxFrom.getDate());
         guest.setStayUntil(txtBxUntil.getDate());
         
-        if(guestService.addGuest(guest))
+        Logger.log("Guest object succesfully filled with data", LogType.INFO);
+        
+        if(guestService.addGuest(guest)) {
             JOptionPane.showMessageDialog(null, "Hozzáadás sikeres!", "Vendég hozzáadása",JOptionPane.INFORMATION_MESSAGE);
-        else
+            Logger.log("Added guest object to database", LogType.INFO);
+        } else {
             JOptionPane.showMessageDialog(null, "Hozzáadás nem sikerült!","Vendég hozzáadása",JOptionPane.ERROR_MESSAGE);
+            Logger.log("Could not add guest object to database", LogType.ERROR);
+        }
 
     }//GEN-LAST:event_bttnAddActionPerformed
 
     private void bttnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCloseActionPerformed
         // TODO add your handling code here:
+        Logger.log("Closing Guest Form", LogType.INFO);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_bttnCloseActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void txtBxFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBxFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBxFirstNameActionPerformed
 
     private void txtBxBirthdayFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBxBirthdayFocusLost
         updateAgeTextbox();
@@ -277,6 +269,7 @@ public class GuestWindow extends javax.swing.JFrame {
     }
     
     private void updateAgeTextbox() {
+        Logger.log("Updating Textbox age", LogType.INFO);
         Date today = new Date();
         Date birthday = txtBxBirthday.getDate();
         

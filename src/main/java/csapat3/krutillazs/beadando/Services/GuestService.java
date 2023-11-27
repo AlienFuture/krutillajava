@@ -4,9 +4,11 @@
  */
 package csapat3.krutillazs.beadando.Services;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Models.Guest;
 import csapat3.krutillazs.beadando.Modules.DatabaseManager;
 import csapat3.krutillazs.beadando.Repositories.GuestRepository;
+import csapat3.krutillazs.beadando.Utils.Logger;
 
 /**
  *
@@ -17,6 +19,7 @@ public class GuestService {
     private final GuestRepository guestRepository = new GuestRepository();
     
     public boolean addGuest(Guest guest) {
+        Logger.log("Adding guest using Service", LogType.INFO);
         return guestRepository.add(guest);
     }
     

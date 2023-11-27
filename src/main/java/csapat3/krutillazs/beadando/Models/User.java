@@ -5,8 +5,10 @@
 package csapat3.krutillazs.beadando.Models;
 
 import csapat3.krutillazs.beadando.Abstracts.AbstractModel;
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
 import csapat3.krutillazs.beadando.Services.GeneralService;
+import csapat3.krutillazs.beadando.Utils.Logger;
 
 /**
  *
@@ -27,6 +29,7 @@ public class User extends AbstractModel {
 
     public User() {
         super();
+        Logger.log("Initializing User object", LogType.INFO);
         this.username = "";
         this.password = "";
         this.firstname = "";

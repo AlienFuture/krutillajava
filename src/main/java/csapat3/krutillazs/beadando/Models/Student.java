@@ -5,9 +5,11 @@
 package csapat3.krutillazs.beadando.Models;
 
 import csapat3.krutillazs.beadando.Abstracts.AbstractModel;
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
 import csapat3.krutillazs.beadando.Services.GeneralService;
 import csapat3.krutillazs.beadando.Utils.Container;
+import csapat3.krutillazs.beadando.Utils.Logger;
 import java.util.Date;
 
 /**
@@ -28,6 +30,7 @@ public class Student extends AbstractModel {
     
     public Student() {
         super();
+        Logger.log("Initizalizing Student object.", LogType.INFO);
         this.firstname = "";
         this.lastname = "";
         this.birthday = new Date();

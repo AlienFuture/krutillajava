@@ -1,5 +1,6 @@
 package csapat3.krutillazs.beadando.Utils;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
 
 import java.lang.reflect.InvocationTargetException;
@@ -21,6 +22,7 @@ public class Container implements ContainerInterface {
      */
     public static Container getInstance() {
         if (instance == null) {
+            Logger.log("Initializing Container Instance", LogType.INFO);
             instance = new Container();
         }
 
@@ -33,6 +35,7 @@ public class Container implements ContainerInterface {
 
     @SuppressWarnings("unchecked")
     public <T> T resolve(Class<T> clazz) {
+        Logger.log("Resolving Instance", LogType.INFO);
         Supplier<?> supplier = services.get(clazz);
 
         if (supplier != null) {
@@ -42,6 +45,7 @@ public class Container implements ContainerInterface {
         try {
             return clazz.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            Logger.log("Error creating instance of " + clazz.getName(), LogType.ERROR);
             throw new RuntimeException("Error creating instance of " + clazz.getName(), e);
         }
     }

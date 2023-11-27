@@ -1,5 +1,7 @@
 package csapat3.krutillazs.beadando.Services;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
+import csapat3.krutillazs.beadando.Utils.Logger;
 import java.security.MessageDigest;
 
 public class GeneralService {
@@ -24,7 +26,7 @@ public class GeneralService {
             /* Complete hashed password in hexadecimal format */
             encryptedpassword = s.toString();
         } catch (Exception e) {
-            // TODO kezelés
+             Logger.log("Could not encrypt password because of " + e.getMessage(), LogType.INFO);
         }
 
         return encryptedpassword;

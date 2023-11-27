@@ -3,9 +3,8 @@ package csapat3.krutillazs.beadando.Utils;
 import java.io.File;
 
 import csapat3.krutillazs.beadando.Enums.LogType;
-import csapat3.krutillazs.beadando.Interfaces.LoggerInterface;
 
-public class Logger implements LoggerInterface {
+public class Logger {
     private static Logger instance = null;
     private static final String LOG_FILE_NAME = "logs/log.txt";
     private Logger() {
@@ -20,7 +19,7 @@ public class Logger implements LoggerInterface {
         return instance;
     }
 
-    public void log(String message, LogType logType) {
+    public static void log(String message, LogType logType) {
         File logFolder = new File("logs");
         if (!logFolder.exists()) {
             logFolder.mkdir();

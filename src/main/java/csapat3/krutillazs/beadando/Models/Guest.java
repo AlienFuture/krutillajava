@@ -5,7 +5,9 @@
 package csapat3.krutillazs.beadando.Models;
 
 import csapat3.krutillazs.beadando.Abstracts.AbstractModel;
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Models.Enums.Gender;
+import csapat3.krutillazs.beadando.Utils.Logger;
 import java.util.Date;
 
 
@@ -24,6 +26,7 @@ public class Guest extends AbstractModel {
     
     public Guest() {
         super();
+        Logger.log("Initizalizing Guest object", LogType.INFO);
         this.firstname = "";
         this.lastname = "";
         this.birthday = new Date();

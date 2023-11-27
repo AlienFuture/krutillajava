@@ -4,9 +4,11 @@
  */
 package csapat3.krutillazs.beadando.Services;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Models.Student;
 import csapat3.krutillazs.beadando.Modules.DatabaseManager;
 import csapat3.krutillazs.beadando.Repositories.StudentRepository;
+import csapat3.krutillazs.beadando.Utils.Logger;
 
 /**
  *
@@ -17,6 +19,7 @@ public class StudentService {
     private final StudentRepository repository = new StudentRepository();
     
     public boolean addStudent(Student student) {
+         Logger.log("Adding student using Service", LogType.INFO);
         return repository.add(student);
     }
 }

@@ -5,7 +5,9 @@
 package csapat3.krutillazs.beadando.Windows;
 
 import csapat3.krutillazs.beadando.Enums.LocalizationList;
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Localization.Localization;
+import csapat3.krutillazs.beadando.Utils.Logger;
 import csapat3.krutillazs.beadando.Utils.Window;
 
 import javax.swing.*;
@@ -30,7 +32,10 @@ public class LanguageSelect extends javax.swing.JPanel {
      * Creates new form LanguageSelect
      */
     public LanguageSelect() {
+        Logger.log("Opening Language Select form", LogType.INFO);
         initComponents();
+                Logger.log("Opened Language Select form", LogType.INFO);
+
     }
 
     /**
@@ -42,23 +47,23 @@ public class LanguageSelect extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtInfoText = new javax.swing.JLabel();
+        bttnHU = new javax.swing.JButton();
+        bttnEN = new javax.swing.JButton();
 
-        jLabel3.setText("Please choose language / Kérlek válassz nyelvet.");
+        txtInfoText.setText("Please choose language / Kérlek válassz nyelvet.");
 
-        jButton1.setText("Magyar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bttnHU.setText("Magyar");
+        bttnHU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bttnHUActionPerformed(evt);
             }
         });
 
-        jButton2.setText("English");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bttnEN.setText("English");
+        bttnEN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bttnENActionPerformed(evt);
             }
         });
 
@@ -70,26 +75,27 @@ public class LanguageSelect extends javax.swing.JPanel {
                 .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(bttnHU)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jLabel3))
+                        .addComponent(bttnEN))
+                    .addComponent(txtInfoText))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jLabel3)
+                .addComponent(txtInfoText)
                 .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(bttnHU)
+                    .addComponent(bttnEN))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bttnHUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnHUActionPerformed
+        Logger.log("Selected HU language, loading", LogType.INFO);
         Localization localization = Localization.getInstance();
         localization.setLocalization(LocalizationList.HU);
 
@@ -98,9 +104,10 @@ public class LanguageSelect extends javax.swing.JPanel {
         loginWindow.setVisible(true);
 
         Window.close(this);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bttnHUActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bttnENActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnENActionPerformed
+        Logger.log("Selected EN language, loading", LogType.INFO);
         Localization localization = Localization.getInstance();
         localization.setLocalization(LocalizationList.EN);
 
@@ -109,11 +116,11 @@ public class LanguageSelect extends javax.swing.JPanel {
         loginWindow.setVisible(true);
         
         Window.close(this);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bttnENActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton bttnEN;
+    private javax.swing.JButton bttnHU;
+    private javax.swing.JLabel txtInfoText;
     // End of variables declaration//GEN-END:variables
 }

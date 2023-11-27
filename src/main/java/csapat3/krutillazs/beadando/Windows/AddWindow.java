@@ -4,8 +4,10 @@
  */
 package csapat3.krutillazs.beadando.Windows;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Models.Student;
 import csapat3.krutillazs.beadando.Services.StudentService;
+import csapat3.krutillazs.beadando.Utils.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +20,9 @@ public class AddWindow extends javax.swing.JFrame {
      * Creates new form AddWindow
      */
     public AddWindow() {
+        Logger.log("Opening AddWindow Form", LogType.INFO);
         initComponents();
+         Logger.log("AddWindow Form Opened", LogType.INFO);
         this.service = new StudentService();
     }
 
@@ -149,12 +153,6 @@ public class AddWindow extends javax.swing.JFrame {
         txtBxBirthdayPlace.setBounds(370, 500, 180, 30);
         getContentPane().add(txtBxFirstName);
         txtBxFirstName.setBounds(640, 350, 180, 30);
-
-        txtBxLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBxLastNameActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtBxLastName);
         txtBxLastName.setBounds(640, 280, 180, 30);
         getContentPane().add(txtBxPassword);
@@ -168,11 +166,6 @@ public class AddWindow extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(51, 128, 214));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(-20, 0, 1940, 100);
         getContentPane().add(txtBxBirthday);
@@ -187,12 +180,8 @@ public class AddWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void bttnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAddActionPerformed
-        // TODO add your handling code here:
+        Logger.log("Create new Student object", LogType.INFO);
         Student student = new Student();
         student.setFirstName(txtBxFirstName.getText());
         student.setLastName(txtBxLastName.getText());
@@ -202,20 +191,22 @@ public class AddWindow extends javax.swing.JFrame {
         student.setAddress(txtBxAddress.getText());
         student.setUserName(txtBxUsername.getText());
         student.setPassword(txtBxPassword.getText());
+        Logger.log("Student object created with data.", LogType.INFO);
         
-        if(service.addStudent(student))
+        if(service.addStudent(student)) {
             JOptionPane.showMessageDialog(null, "Hozzáadás sikeres!", "Hallgató hozzáadása",JOptionPane.INFORMATION_MESSAGE);
-        else
+            Logger.log("Added student to database", LogType.INFO);
+        }
+        else {
             JOptionPane.showMessageDialog(null, "Hozzáadás nem sikerült!","Hallgató hozzáadása",JOptionPane.ERROR_MESSAGE);
-
+            Logger.log("Could not add student to database", LogType.ERROR);
+        }
     }//GEN-LAST:event_bttnAddActionPerformed
 
-    private void txtBxLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBxLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBxLastNameActionPerformed
-
     private void bttnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCloseActionPerformed
+        Logger.log("Closing Student adding Form", LogType.INFO);
         this.setVisible(false);
+        Logger.log("Closed.", LogType.INFO);
         this.dispose();
     }//GEN-LAST:event_bttnCloseActionPerformed
 

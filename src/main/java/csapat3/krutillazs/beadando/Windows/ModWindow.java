@@ -30,12 +30,12 @@ public class ModWindow extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        bttnBack = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 768));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -75,23 +75,18 @@ public class ModWindow extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(51, 128, 214));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(-20, 0, 1940, 100);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("Vissza");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bttnBack.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnBack.setText("Vissza");
+        bttnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bttnBackActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(70, 640, 250, 70);
+        getContentPane().add(bttnBack);
+        bttnBack.setBounds(70, 640, 250, 70);
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton4.setText("Frissítés");
@@ -113,13 +108,10 @@ public class ModWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bttnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnBackActionPerformed
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_bttnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,7 +150,7 @@ public class ModWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bttnBack;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
