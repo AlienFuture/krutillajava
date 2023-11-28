@@ -6,7 +6,7 @@
 # Kollégiumi Ügyintéző Rendszer - KÜF
 # 1. Készítette
 - **Barta Patrik Ferenc:** Frontend
-- **Barta Fanni:** Frontend
+- **Barati Fanni:** Frontend
 - **Kecső Norbert:** Backend
 - **Vámos Balázs:** Backend
 
