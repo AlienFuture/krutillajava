@@ -1,0 +1,77 @@
+[2023-11-27] INFO: Application started
+[2023-11-27] INFO: Application started
+[2023-11-27] INFO: Application started
+[2023-11-27] INFO: Opening Login Window Form
+[2023-11-27] INFO: Opened Login Window Form
+[2023-11-27] INFO: Application started
+[2023-11-27] INFO: Opening Login Window Form
+[2023-11-27] INFO: Opened Login Window Form
+[2023-11-27] INFO: Application started
+[2023-11-27] INFO: Opening Login Window Form
+[2023-11-27] INFO: Opened Login Window Form
+[2023-11-27] INFO: Logging in user
+[2023-11-27] INFO: Login succeed
+[2023-11-27] INFO: Loading Main menu Window with utils
+[2023-11-27] INFO: Components loaded.
+[2023-11-27] INFO: Message of Day textield loaded.
+[2023-11-27] INFO: Opening Message Of Day message from Listview
+[2023-11-27] INFO: Message found, initializing and opening...
+[2023-11-27] INFO: Opening Message Of Day Form
+[2023-11-27] INFO: Opening Student add Window
+[2023-11-27] INFO: Initializing Container Instance
+[2023-11-27] INFO: Initializing Database manager Instance
+[2023-11-27] INFO: Application started
+[2023-11-27] INFO: Opening Language Select form
+[2023-11-27] INFO: Opened Language Select form
+[2023-11-27] INFO: Selected HU language, loading
+[2023-11-27] INFO: Opening Login Window Form
+[2023-11-27] INFO: Opened Login Window Form
+[2023-11-27] INFO: Logging in user
+[2023-11-27] INFO: Resolving Instance
+[2023-11-27] INFO: Resolving Instance
+[2023-11-27] INFO: Veryfing user
+[2023-11-27] INFO: Initializing User object
+[2023-11-27] INFO: Login succeed
+[2023-11-27] INFO: Loading Main menu Window with utils
+[2023-11-27] INFO: Components loaded.
+[2023-11-27] INFO: Returning all message of day from database
+[2023-11-27] INFO: Initializing Message object
+[2023-11-27] INFO: Initializing Message object
+[2023-11-27] INFO: Returning message content
+[2023-11-27] INFO: Initializing Message object
+[2023-11-27] INFO: Message of Day textield loaded.
+[2023-11-27] INFO: Opening Student add Window
+[2023-11-27] INFO: Opening AddWindow Form
+[2023-11-27] INFO: AddWindow Form Opened
+[2023-11-27] INFO: Create new Student object
+[2023-11-27] INFO: Initizalizing Student object.
+[2023-11-27] INFO: Resolving Instance
+[2023-11-27] INFO: Student object created with data.
+[2023-11-27] INFO: Adding student using Service
+[2023-11-27] INFO: Added student to database
+[2023-11-27] INFO: Closing Student adding Form
+[2023-11-27] INFO: Closed.
+[2023-11-27] INFO: Opening Login Window Form
+[2023-11-27] INFO: Opened Login Window Form
+[2023-11-27] INFO: Initializing Container Instance
+[2023-11-27] INFO: Initializing Database manager Instance
+[2023-11-27] INFO: Application started
+[2023-11-27] INFO: Opening Language Select form
+[2023-11-27] INFO: Opened Language Select form
+[2023-11-27] INFO: Selected HU language, loading
+[2023-11-27] INFO: Opening Login Window Form
+[2023-11-27] INFO: Opened Login Window Form
+[2023-11-27] INFO: Logging in user
+[2023-11-27] INFO: Resolving Instance
+[2023-11-27] INFO: Resolving Instance
+[2023-11-27] INFO: Veryfing user
+[2023-11-27] INFO: Initializing User object
+[2023-11-27] INFO: Login succeed
+[2023-11-27] INFO: Loading Main menu Window with utils
+[2023-11-27] INFO: Components loaded.
+[2023-11-27] INFO: Returning all message of day from database
+[2023-11-27] INFO: Initializing Message object
+[2023-11-27] INFO: Initializing Message object
+[2023-11-27] INFO: Returning message content
+[2023-11-27] INFO: Initializing Message object
+[2023-11-27] INFO: Message of Day textield loaded.

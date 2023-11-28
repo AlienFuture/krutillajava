@@ -4,6 +4,7 @@
  */
 package csapat3.krutillazs.beadando.Windows;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
 import csapat3.krutillazs.beadando.Models.Session;
 
 import java.sql.SQLException;
@@ -14,6 +15,8 @@ import csapat3.krutillazs.beadando.ResourceBundle.ResourceBundleLocalization;
 import csapat3.krutillazs.beadando.Services.GeneralService;
 import csapat3.krutillazs.beadando.Interfaces.ContainerInterface;
 import csapat3.krutillazs.beadando.Services.UserService;
+import csapat3.krutillazs.beadando.Utils.Container;
+import csapat3.krutillazs.beadando.Utils.Logger;
 
 public class LoginWindow extends javax.swing.JFrame {
     private final ContainerInterface container;
@@ -32,8 +35,10 @@ public class LoginWindow extends javax.swing.JFrame {
      * Creates new form LoginWindow
      */
     public LoginWindow() {
-        initComponents();
         container = ContainerInterface.getInstance();
+        Logger.log("Opening Login Window Form", LogType.INFO);
+        initComponents();
+        Logger.log("Opened Login Window Form", LogType.INFO);
     }
 
     /**
@@ -53,23 +58,17 @@ public class LoginWindow extends javax.swing.JFrame {
         bttnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(resourceBundleLocalization.get("login_title"));
+        setTitle("Bejelentkezés");
         setBackground(new java.awt.Color(255, 255, 255));
         setName("frmLogin"); // NOI18N
-        setResizable(false);
 
-        jLabel1.setText(resourceBundleLocalization.get("username"));
+        jLabel1.setText("Felhasználónév:");
 
-        jLabel2.setText(resourceBundleLocalization.get("password"));
+        jLabel2.setText("Jelszó:");
 
         jScrollPane1.setViewportView(txtPnlUserName);
 
-        bttnLogin.setText(resourceBundleLocalization.get("login"));
-        bttnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bttnLoginMouseClicked(evt);
-            }
-        });
+        bttnLogin.setText("Bejelentkezés");
         bttnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnLoginActionPerformed(evt);
@@ -115,12 +114,9 @@ public class LoginWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bttnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bttnLoginMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bttnLoginMouseClicked
-
     private void bttnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLoginActionPerformed
         try {
+            Logger.log("Logging in user", LogType.INFO);
             String password = new String(txtPsswrdFldPassword.getPassword());
             String encryptedPassword = container.resolve(GeneralService.class).encryptPassword(password);
             UserService userService = container.resolve(UserService.class);
@@ -131,15 +127,20 @@ public class LoginWindow extends javax.swing.JFrame {
 
                 Session.currentUser = user;
                 System.out.println(user.getId());
+                Logger.log("Login succeed", LogType.INFO);
                 
                 this.setVisible(false);
                 new MenuWindow().setVisible(true);
+                
+                this.dispose();
 
                 return;
             }
+            Logger.log("Invalid login informations.", LogType.WARNING);
 
             JOptionPane.showMessageDialog(null, resourceBundleLocalization.get("login_error_msg"), resourceBundleLocalization.get("login_error_msg_title"), JOptionPane.ERROR_MESSAGE);
         } catch(SQLException ex) {
+            Logger.log("Login failed due to exception: " + ex.getMessage(), LogType.ERROR);
             JOptionPane.showMessageDialog(null, String.format("Hiba történt a hitelesítés során:\n\n%s", ex.getMessage()),"Hitelesítés",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bttnLoginActionPerformed

@@ -5,6 +5,8 @@
 package csapat3.krutillazs.beadando.Models;
 
 import csapat3.krutillazs.beadando.Abstracts.AbstractModel;
+import csapat3.krutillazs.beadando.Enums.LogType;
+import csapat3.krutillazs.beadando.Utils.Logger;
 
 /**
  *
@@ -20,6 +22,7 @@ public class Message extends AbstractModel {
     
     public Message() {
         super();
+        Logger.log("Initializing Message object", LogType.INFO);
         this.title = "";
         this.content = "";
     }

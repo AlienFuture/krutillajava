@@ -4,17 +4,26 @@
  */
 package csapat3.krutillazs.beadando.Windows;
 
+import csapat3.krutillazs.beadando.Enums.LogType;
+import csapat3.krutillazs.beadando.Models.Student;
+import csapat3.krutillazs.beadando.Services.StudentService;
+import csapat3.krutillazs.beadando.Utils.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 22-es Iteráció
  */
 public class AddWindow extends javax.swing.JFrame {
-
+    StudentService service;
     /**
      * Creates new form AddWindow
      */
     public AddWindow() {
+        Logger.log("Opening AddWindow Form", LogType.INFO);
         initComponents();
+         Logger.log("AddWindow Form Opened", LogType.INFO);
+        this.service = new StudentService();
     }
 
     /**
@@ -26,8 +35,8 @@ public class AddWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bttnAdd = new javax.swing.JButton();
+        bttnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -37,43 +46,43 @@ public class AddWindow extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        txtBxUsername = new javax.swing.JTextField();
+        txtBxBirthdayPlace = new javax.swing.JTextField();
+        txtBxFirstName = new javax.swing.JTextField();
+        txtBxLastName = new javax.swing.JTextField();
+        txtBxPassword = new javax.swing.JTextField();
+        txtBxAddress = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        txtBxBirthday = new com.toedter.calendar.JDateChooser();
+        txtBxNeptun = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 768));
         setMinimumSize(new java.awt.Dimension(1280, 768));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("Hozzáadás");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bttnAdd.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnAdd.setText("Hozzáadás");
+        bttnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bttnAddActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(470, 560, 250, 70);
+        getContentPane().add(bttnAdd);
+        bttnAdd.setBounds(470, 560, 250, 70);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setText("Vissza");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bttnClose.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        bttnClose.setText("Vissza");
+        bttnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bttnCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(100, 640, 250, 70);
+        getContentPane().add(bttnClose);
+        bttnClose.setBounds(100, 640, 250, 70);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -92,9 +101,9 @@ public class AddWindow extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Gender");
+        jLabel5.setText("Születési hely");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(370, 460, 100, 30);
+        jLabel5.setBounds(370, 470, 100, 30);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -138,34 +147,18 @@ public class AddWindow extends javax.swing.JFrame {
         jLabel11.setText("Hallgató felvétele");
         getContentPane().add(jLabel11);
         jLabel11.setBounds(390, 110, 410, 140);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(370, 280, 180, 30);
-
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(370, 350, 180, 30);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(370, 420, 180, 30);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(370, 490, 180, 30);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(640, 350, 180, 30);
-
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(640, 280, 180, 30);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(640, 420, 180, 30);
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(640, 490, 180, 30);
+        getContentPane().add(txtBxUsername);
+        txtBxUsername.setBounds(370, 280, 180, 30);
+        getContentPane().add(txtBxBirthdayPlace);
+        txtBxBirthdayPlace.setBounds(370, 500, 180, 30);
+        getContentPane().add(txtBxFirstName);
+        txtBxFirstName.setBounds(640, 350, 180, 30);
+        getContentPane().add(txtBxLastName);
+        txtBxLastName.setBounds(640, 280, 180, 30);
+        getContentPane().add(txtBxPassword);
+        txtBxPassword.setBounds(640, 420, 180, 30);
+        getContentPane().add(txtBxAddress);
+        txtBxAddress.setBounds(640, 490, 180, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/duelogofeher.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -173,13 +166,12 @@ public class AddWindow extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(51, 128, 214));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(-20, 0, 1940, 100);
+        getContentPane().add(txtBxBirthday);
+        txtBxBirthday.setBounds(370, 350, 180, 30);
+        getContentPane().add(txtBxNeptun);
+        txtBxNeptun.setBounds(370, 420, 180, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menubg.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -188,25 +180,35 @@ public class AddWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void bttnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnAddActionPerformed
+        Logger.log("Create new Student object", LogType.INFO);
+        Student student = new Student();
+        student.setFirstName(txtBxFirstName.getText());
+        student.setLastName(txtBxLastName.getText());
+        student.setNeptunCode(txtBxNeptun.getText());
+        student.setBirthday(txtBxBirthday.getDate());
+        student.setBirthdayPlace(txtBxBirthdayPlace.getText());
+        student.setAddress(txtBxAddress.getText());
+        student.setUserName(txtBxUsername.getText());
+        student.setPassword(txtBxPassword.getText());
+        Logger.log("Student object created with data.", LogType.INFO);
+        
+        if(service.addStudent(student)) {
+            JOptionPane.showMessageDialog(null, "Hozzáadás sikeres!", "Hallgató hozzáadása",JOptionPane.INFORMATION_MESSAGE);
+            Logger.log("Added student to database", LogType.INFO);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Hozzáadás nem sikerült!","Hallgató hozzáadása",JOptionPane.ERROR_MESSAGE);
+            Logger.log("Could not add student to database", LogType.ERROR);
+        }
+    }//GEN-LAST:event_bttnAddActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bttnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCloseActionPerformed
+        Logger.log("Closing Student adding Form", LogType.INFO);
+        this.setVisible(false);
+        Logger.log("Closed.", LogType.INFO);
+        this.dispose();
+    }//GEN-LAST:event_bttnCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,8 +246,8 @@ public class AddWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bttnAdd;
+    private javax.swing.JButton bttnClose;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -258,13 +260,13 @@ public class AddWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtBxAddress;
+    private com.toedter.calendar.JDateChooser txtBxBirthday;
+    private javax.swing.JTextField txtBxBirthdayPlace;
+    private javax.swing.JTextField txtBxFirstName;
+    private javax.swing.JTextField txtBxLastName;
+    private javax.swing.JTextField txtBxNeptun;
+    private javax.swing.JTextField txtBxPassword;
+    private javax.swing.JTextField txtBxUsername;
     // End of variables declaration//GEN-END:variables
 }
