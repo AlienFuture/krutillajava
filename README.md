@@ -44,4 +44,4 @@ Szerzői Jogok: Az Alkalmazás eredeti szerzői jogai a Licenc Jogosultjánál m
 Felelősség Kizárása: Az Alkalmazás "ahogy van" állapotban kerül terjesztésre. A Licenc Jogosultja nem vállal semmilyen felelő
 
 # Licenc létrejötte
-A Licenc 2023.1.28-án jött létre.
+A Licenc 2023.11.28-án jött létre.
